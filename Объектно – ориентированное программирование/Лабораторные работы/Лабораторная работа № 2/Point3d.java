@@ -61,6 +61,16 @@ public class Point3d
     {
         point3dZ = newVal;
     }
+    //метод сравнивает точки м\у друг другом
+    // возращает true-то точки равны, false не равны
+    public boolean equalsTwoPoint(Object obj)
+    {
+        Point3d tmp =(Point3d) obj;
+        if(tmp.getX() == getX() && tmp.getY() == getY()&& tmp.getZ()==getZ())
+            return true;
+        else
+            return false;
+    }
     /** Поиск расстояния между точками.**/
     public  double distanceTo(Point3d two)
     {// чтобы получить значение из point3dOne надо использовать this, например   this.getX(),  для метода  point3dOne. distanceTo(point3dTwo), а для передоваемого просто обращатся на прямую, например two.getX();
