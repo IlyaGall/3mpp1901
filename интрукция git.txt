@@ -1,0 +1,36 @@
+
+Файлы, которые добавляешь сохрани где нибудь и выполни следующее :
+
+Добавь файлы в свой репозиторий
+git add -A
+
+git commit -m "LR1"
+" " -название любое
+
+git push origin master
+
+
+Файлы загружать не более 100 мб, иначе:
+$ git push origin master
+Enumerating objects: 16, done.
+Counting objects: 100% (16/16), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (15/15), 106.24 MiB | 2.29 MiB/s, done.
+Total 15 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas: 100% (4/4), completed with 1 local object.
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+remote: error: Trace: 9513316e1ba135900ccbaff77b8bdc2a
+remote: error: See http://git.io/iEPt8g for more information.
+remote: error: File Интеллектуальные системы/1 лабораторная работа/lab1.tar is 306.52 MB; this exceeds GitHub's file size limit of 100.00 MB
+To https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy.git'
+
+
+
+придётся удалять комиты вот так:
+
+ git reset --hard HEAD~1
+
+
