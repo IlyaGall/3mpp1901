@@ -1,0 +1,10 @@
+новый репрезентируий
+Это делается командой git remote add, но делать её можно только на существующем репозитории, так что вам понадобится ещё и git init. Потом вам понадобится получить из репозитория коммиты командой git fetch и сделать git reset чтобы вносить свои изменения не с нуля, а начиная с головы репозитория.
+
+git init
+git remote add origin url_репозитория
+git fetch origin
+git reset --mixed origin/master
+git add измененные файлы
+git commit -m "комментарий к коммиту"
+git push -u origin master
