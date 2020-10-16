@@ -4,7 +4,7 @@
 
 проект будет создан в той директории, в которой сейчас находится консоль
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/1.jpg)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/1.JPG)
 
 С помощью команды: 
 
