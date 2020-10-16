@@ -4,7 +4,7 @@
 
 проект будет создан в той директории, в которой сейчас находится консоль
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web-программирование и мобильная разработка/lab3/imagesProject/1.png)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/1.png)
 
 
 С помощью команды: 
@@ -20,7 +20,7 @@
 
 задём в новую созданую диреторию blog.
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web-программирование и мобильная разработка/lab3/imagesProject/2.png)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/2.png)
 
 после этого выполним команду:
 
@@ -28,12 +28,12 @@
 
 эта команда создаст новое приложение
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web-программирование и мобильная разработка/lab3/imagesProject/3.png)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/3.png)
 
 
 Зайдём в директорию articles, а в ней файл models.py сохраните код:
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web-программирование и мобильная разработка/lab3/imagesProject/4.png)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/4.png)
 
 ```python
 from django.db import models
@@ -58,12 +58,12 @@ class Article(models.Model):
 
 **Метод get_excerpt (bold)** позволяет в списке всех статей выводить текст статьи не целиком, а показывать первые 140 символов.
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web-программирование и мобильная разработка/lab3/imagesProject/5.png)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/5.png)
 
 В этой же директории откройте файл **admin.py (bold)**
 
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web-программирование и мобильная разработка/lab3/imagesProject/6.png)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/6.png)
 
 
 Этот  файл ответственен за настройку страницы записей в административном приложении. 
@@ -88,21 +88,21 @@ admin.site.register(Article, ArticleAdmin)
 В конце файла вызывается функция **admin.site.register() (bold)**, которой передаются два параметра: модель статей и класс, описывающий, как модель должна отображаться в административном интерфейсе. Эта функция объявляет, что данная модель должна быть добавлена в административный интерфейс.
 
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web-программирование и мобильная разработка/lab3/imagesProject/7.png)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/7.png)
 
 перейдём в другую  директорию, в директорию blog blog
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web-программирование и мобильная разработка/lab3/imagesProject/8.png)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/8.png)
 
 заёдём в файл setting.py
 
 добавим в него библиотеку **import os (blog)**
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web-программирование и мобильная разработка/lab3/imagesProject/9.png)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/9.png)
 
 Подключить приложение **'articles',  (blog)**  в  файле settings.py
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web-программирование и мобильная разработка/lab3/imagesProject/10.png)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/10.png)
 
 в этом же файле заменить название бд(по желанию)
 
@@ -119,7 +119,7 @@ DATABASES = {
     }
 }
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web-программирование и мобильная разработка/lab3/imagesProject/11.png)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/11.png)
 
 Теперь можем мигрировать созданную бд((т.е. создаем бд)
 
@@ -127,7 +127,7 @@ DATABASES = {
 
 **python manage.py migrate (blog)**
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web-программирование и мобильная разработка/lab3/imagesProject/12.png)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/12.png)
 
 После этого команды создаём суперпользователя( он нужен для входа на сайт)
 
@@ -137,7 +137,7 @@ DATABASES = {
 
 **python manage.py createsuperuser (blog)**
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web-программирование и мобильная разработка/lab3/imagesProject/13.png)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/13.png)
 
 
 запускаем сервер, чтобы проверить работает ли приложение.
