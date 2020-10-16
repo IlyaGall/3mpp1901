@@ -187,7 +187,7 @@ urlpatterns = [
 	path('articles/',views.Article, name='articles'),
 
 ]
-    ```
+```
 В директории articles в файле views.py 
 
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/21.JPG)
