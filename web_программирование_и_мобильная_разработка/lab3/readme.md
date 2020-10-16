@@ -166,7 +166,7 @@ http://127.0.0.1:8000/admin/
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/18.JPG)
 
 
-тперь добовляем бд в проект для это нужно:
+теперь добавляем бд в проект для это нужно:
 
 + выйти из консоли с помощью команды ctrl+break в cmd ( в консоли она отображена как ^c но это не верное отображение)
 
@@ -188,9 +188,11 @@ urlpatterns = [
 
 ]
 ```
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/21.JPG)
+
 В директории articles в файле views.py 
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/21.JPG)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/22.JPG)
 
 ```python
 from .models import Article
@@ -201,10 +203,131 @@ def archive(request):
 ``` 
 **.models** точка указывает, что файл находится в этой же директории, что и **Article**
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/22.JPG)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/21_1.JPG)
 
 после этого можно добавить бд созданную в articles в приложение. Для этого выполним команду:
     
 **python manage.py makemigrations**
 
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/23.JPG)
+
+
+после этого нужно связать 2 бд с помощью команды:
+
+**python manage.py migrate**
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/24.JPG)
+
+теперь можно сново включать сервер и запускать проект 
+**python manage.py runserver**
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/14.JPG)
+
+
+заходим в админку 
+
+http://127.0.0.1:8000/admin/
+
+и добавляем данные в бд
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/25.JPG)
+
+я добавил 3 штуки
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/26.JPG)
+
++ с помощью программы управления базами данных sqlite3 (например, SQLite Manager), проверим добавились ли данные в бд не посредственно в приложении 
+
+**! бд называть как я назвал нельзя, но так как это учебная бд, то можно и оставить**
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/27.JPG)
+
+Данные сохранились, теперь добавим ещё одну запись с помощью программы SQLite Manager
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/28.JPG)
+
+В директории articles создадим папку templates для просмотра нашей бд не из под админки
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/29.JPG)
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+   <head>
+      <title>сайт бд</title>
+      <meta charset="utf-8">
+    
+    </head>
+   <body>
+       <div class="header">
+            <img src="{{ STATIC_URL }} /static/img/logo.png"  alt="LOGO"/>
+</div>
+<div class="archive">
+{% for post in posts %}
+<div class="one-post">
+<h2 class="post-title">{{ post.title }}</h2>
+<div class="article-info">
+<div class="article-author">{{ post.author.username }}</div>
+<div class="article-created- date">{{ post.created_date }}</div>
+</div>
+<p class="article-text">{{ post.get_excerpt }}</p>
+</div>
+{% endfor %}
+</div>
+
+    </body>
+</html>
+
+
+```
+
+У первого тега <div> установлен класс header, а у второго – archive. Это помогает делать верстку понятной, потому что классы играют роль имен для каждого элемента, из названия класса становится понятно, для чего существует текущий элемент, а также помогает отличать нужные блоки друг от друга при установке стилей.
+Во внутрь тега div с классом header добавьте изображение (например, логотип проекта). Пример добавления:  
+Во внутрь тега div с классом archive добавьте шаблон для отображения одной статьи. Так как у каждой записи есть название, автор, текст и время создания, для каждого поля записи нужно создать определенный элемнт в разметке страницы. Шаблон одного поста будет выглядеть так:
+```sql
+<div class="one-post">
+<h2 class="post-title">{{ post.title }}</h2>
+<div class="article-info">
+<div class="article-author">{{ post.author.username }}</div>
+<div class="article-created-date">{{ post.created_date }}</div>
+</div>
+<p class="article-text">{{ post.get_excerpt }}</p>
+</div>
+```
+Поле «название» было помещено в тег <h2> c классом post-title, поля «автор» и «время создания» были помещены в один общий тег <div>, потому что в будущем эти два поля будут визуально находится на одной строке. Поле «текст» обрамлено тегом <p>, который означает один абзац текста (p – сокращение от «paragraph»). Ограничение на отображение только части текста статьи введено из-за того, что некоторые посты могут по размерам занимать несколько страниц, что, недопустимо при отображении списка сразу многих экземпляров.
+Однако созданная разметка подходит для отображения одной статьи, а не нескольких. Для корректного отображения необходимо добавить цикл, который бы повторялся столько раз, сколько статей передано в контекст шаблона. Для этого существует шаблоный тег {% for item in list %}, практически идентичен циклу for языка Python. Переменная posts, передаваемая в шаблон, выполняет роль массива. Для того, чтобы разметка поддерживала отображение сразу многих записей, достаточно добавить строку начала цикла и строку его завершения:
+```python
+{% for post in posts %}
+<div class="one-post">
+<h2 class="post-title">{{ post.title }}</h2>
+<div class="article-info">
+<div class="article-author">{{ post.author.username }}</div>
+<div class="article-created- date">{{ post.created_date }}</div>
+</div>
+<p class="article-text">{{ post.get_excerpt }}</p>
+</div>
+{% endfor %}
+```
+Теперь шаблон готов.
+
+теперь пропишем URL адресс для архива
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/30.JPG)
+
+```python
+from django.contrib import admin
+from django.urls import path
+from  articles import views
+
+urlpatterns = [
+     path('admin/', admin.site.urls),
+	 path('articles/',views.Article, name='articles'),
+	 path('archive/',views.archive, name='archive'), # вот так home будет отображатся
+	 path('',views.archive, name='archive'), # вот так home будет отображатся
+]
+
+
+```
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/31.JPG)
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/32.JPG)
