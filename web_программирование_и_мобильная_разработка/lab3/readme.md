@@ -25,6 +25,8 @@
 
 **python manage.py startapp articles**
 
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/2_1.JPG)
+
 эта команда создаст новое приложение
 
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/3.JPG)
@@ -160,7 +162,7 @@ http://127.0.0.1:8000/admin/
 
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/16.JPG)
 
-но на данном этапе у нас не доступна бд **(Articles)** и при открытии или редактировании у нас возникник исключение
+но на данном этапе у нас не доступна бд **(Articles)** и при открытии или редактировании у нас возникнит исключение
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/17.JPG)
 
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/18.JPG)
@@ -193,6 +195,10 @@ urlpatterns = [
 В директории articles в файле views.py 
 
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/22.JPG)
+
+В файле views.py в директории articles создайте представление archive, которое будет возвращать html-страницу со всеми созданными постами в текущем проекте. Код представления:
+
+добовляем следующий код:
 
 ```python
 from .models import Article
@@ -330,8 +336,8 @@ from  articles import views
 urlpatterns = [
      path('admin/', admin.site.urls),
 	 path('articles/',views.Article, name='articles'),
-	 path('archive/',views.archive, name='archive'), # вот так home будет отображатся
-	 path('',views.archive, name='archive'), # вот так home будет отображатся
+	 path('archive/',views.archive, name='archive'), # вот так будет доступно по адресу http://127.0.0.1:8000//archive/  будет отображатся
+	 path('',views.archive, name='archive'), # вот так home будет отображатся http://127.0.0.1:8000
 ]
 ```
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/31.JPG)

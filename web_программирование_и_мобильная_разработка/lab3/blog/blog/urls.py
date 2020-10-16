@@ -20,6 +20,6 @@ from  articles import views
 urlpatterns = [
      path('admin/', admin.site.urls),
 	 path('articles/',views.Article, name='articles'),
-	 path('archive/',views.archive, name='archive'), # вот так home будет отображатся
-	 path('',views.archive, name='archive'), # вот так home будет отображатся
+	 path('archive/',views.archive, name='archive'), # вот так будет доступно по адресу http://127.0.0.1:8000//archive/  будет отображатся
+	 path('',views.archive, name='archive'), # вот так home будет отображатся http://127.0.0.1:8000
 ]
