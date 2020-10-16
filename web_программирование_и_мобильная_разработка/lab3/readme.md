@@ -19,7 +19,7 @@
 
 задём в новую созданую диреторию blog.
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/2.jpg)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/2.JPG)
 
 после этого выполним команду:
 
@@ -27,12 +27,12 @@
 
 эта команда создаст новое приложение
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/3.jpg)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/3.JPG)
 
 
 Зайдём в директорию articles, а в ней файл models.py сохраните код:
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/4.jpg)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/4.JPG)
 
 ```python
 from django.db import models
@@ -57,12 +57,12 @@ class Article(models.Model):
 
 **Метод get_excerpt (bold)** позволяет в списке всех статей выводить текст статьи не целиком, а показывать первые 140 символов.
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/5.jpg)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/5.JPG)
 
 В этой же директории откройте файл **admin.py (bold)**
 
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/6.jpg)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/6.JPG)
 
 
 Этот  файл ответственен за настройку страницы записей в административном приложении. 
@@ -87,21 +87,21 @@ admin.site.register(Article, ArticleAdmin)
 В конце файла вызывается функция **admin.site.register() (bold)**, которой передаются два параметра: модель статей и класс, описывающий, как модель должна отображаться в административном интерфейсе. Эта функция объявляет, что данная модель должна быть добавлена в административный интерфейс.
 
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/7.jpg)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/7.JPG)
 
 перейдём в другую  директорию, в директорию blog blog
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/8.jpg)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/8.JPG)
 
 заёдём в файл setting.py
 
 добавим в него библиотеку **import os (blog)**
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/9.jpg)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/9.JPG)
 
 Подключить приложение **'articles',  (blog)**  в  файле settings.py
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/10.jpg)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/10.JPG)
 
 в этом же файле заменить название бд(по желанию)
 
@@ -118,7 +118,7 @@ DATABASES = {
     }
 }
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/11.jpg)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/11.JPG)
 
 Теперь можем мигрировать созданную бд((т.е. создаем бд)
 
@@ -126,7 +126,7 @@ DATABASES = {
 
 **python manage.py migrate (blog)**
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/12.jpg)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/12.JPG)
 
 После этого команды создаём суперпользователя( он нужен для входа на сайт)
 
@@ -136,7 +136,7 @@ DATABASES = {
 
 **python manage.py createsuperuser (blog)**
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/13.jpg)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/13.JPG)
 
 
 запускаем сервер, чтобы проверить работает ли приложение.
@@ -145,12 +145,14 @@ DATABASES = {
 
 **python manage.py runserver (blog)**
 
-открываем браузер и
+открываем браузер и вводим 
+
+http://127.0.0.1:8000/
+
+http://127.0.0.1:8000/admin/
 
 
-
-
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/1.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/1.JPG)
 
 ### display
 
@@ -166,7 +168,7 @@ DATABASES = {
 
 ### flex-direction
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/2.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/2.JPG)
 
 Устанавливает основную ось, таким образом определяя направление flex элементов, помещаемых в flex контейнер. Flexbox — это (помимо дополнительной упаковки) концепция однонаправленного макета. Думайте о flex элементах, как о первичных раскладках в горизонтальных рядах или вертикальных столбцах.
 
@@ -183,7 +185,7 @@ DATABASES = {
 
 ## flex-wrap
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/3.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/3.JPG)
 
 
 По умолчанию гибкие элементы будут пытаться уместиться на одной строке. Вы можете изменить это и позволить элементам переходить на новую строку по мере необходимости с помощью этого свойства.
@@ -207,7 +209,7 @@ flex-flow: <‘flex-direction’> || <‘flex-wrap’>
 ```
 ### justify-content
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/4.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/4.JPG)
 
 Это свойство определяет выравнивание вдоль главной оси. Оно помогает распределить дополнительный остаток свободного пространства, когда-либо все flex элементы в строке негибкие, либо гибкие, но достигли своего максимального размера. Это также обеспечивает некоторый контроль над выравниванием элементов, когда они переполняют линию.
 ```css
@@ -232,7 +234,7 @@ flex-flow: <‘flex-direction’> || <‘flex-wrap’>
 
 ## align-items
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/5.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/5.JPG)
 
 Это свойство определяет поведение по умолчанию того, как flex элементы располагаются вдоль поперечной оси на текущей линии. Думайте об этом как о justify-content версии для поперечной оси (перпендикулярной главной оси).
 ```css
@@ -251,7 +253,7 @@ flex-flow: <‘flex-direction’> || <‘flex-wrap’>
 **safe (bold)** и **unsafe (bold)**ключевые слова модификаторов могут быть использованы в сочетании со всеми из этих ключевых слов (хотя это поддерживается не всеми браузерами), это помогает предотвратить выравнивание элементов таким образом, что содержание становится недоступным.
 ## align-content
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/6.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/6.JPG)
 
 Это свойство выравнивает линии в пределах flex контейнера, когда есть дополнительное пространство на поперечной оси, подобно тому, как **justify-content (bold)** выравнивает отдельные элементы в пределах главной оси.
 
@@ -273,11 +275,11 @@ flex-flow: <‘flex-direction’> || <‘flex-wrap’>
 **safe (bold)** и **unsafe (bold)** ключевые слова модификаторов могут быть использованы в сочетании со всеми из этих ключевых слов (хотя это поддерживается не всеми браузерами), это помогает предотвратить выравнивание элементов таким образом, что содержание становится недоступным.
 ## Свойства для первых дочерних элементов(flex элементы)
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/7.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/7.JPG)
 
 order
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/7_1.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/7_1.JPG)
 
 По умолчанию flex элементы располагаются в исходном порядке. Однако свойство order управляет порядком их появления в контейнере flex.
 ```css
@@ -288,7 +290,7 @@ order
 
 ## flex-grow
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/9.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/9.JPG)
 
 
 Это свойство определяет способность flex элемента растягиваться в случае необходимости. Оно принимает значение от нуля, которое служит пропорцией. Это свойство, какое количество доступного пространства внутри гибкого контейнера должен занимать элемент.
@@ -322,7 +324,7 @@ order
 ```
 
 Если установлено значение **0 (bold)**, дополнительное пространство вокруг содержимого не учитывается. Если установлено значение **auto (bold)**, дополнительное пространство распределяется в зависимости от его **flex-grow (bold)** значения.
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/8_1.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/8_1.JPG)
 
 ## flex
 Это сокращение для использования **flex-grow, flex-shrink и flex-basis (bold)** вместе. Второй и третий параметры (**flex-shrink и flex-basis (bold)**) являются необязательными. По умолчанию это **0 1 auto (bold)**.
@@ -335,7 +337,7 @@ order
 **Рекомендуется использовать это сокращенное свойство (bold)**, а не устанавливать отдельные свойства. Это сокращение разумно устанавливает другие значения.
 
 ## align-self
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/10.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/10.JPG)
 
 Это свойство позволяет переопределить выравнивание по умолчанию (или указанное с помощью **align-items (bold)**) для отдельных элементов flex.
 Пожалуйста, смотрите **align-items (bold)** свойство, чтобы понять доступные значения.
@@ -382,11 +384,11 @@ order
 ```
 Готово. Все остальное — это просто стайлинг.
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/11.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/11.JPG)
 
 Если изменить разрешение экрана ли масштаб, то будет так:
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/12.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/12.JPG)
 
 Давайте попробуем что-нибудь еще. Представьте, что у нас есть выровненные по правому краю элементы навигации в верхней части нашего веб-сайта, но мы хотим, чтобы они были выровнены по ширине на экранах среднего размера и располагались в один столбец на небольших устройствах. Это достаточно просто.
 
@@ -418,16 +420,16 @@ order
 
 ## Большие экраны
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/ext_1.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/ext_1.JPG)
 
 
 ## Средние экраны
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/ext_2.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/ext_2.JPG)
 
 ## Маленькие экраны
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/ext_3.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/ext_3.JPG)
 
 Давайте попробуем что-то еще лучше, играя с гибкостью flex элементов! Как насчет 3-колоночного макета в полную высоту страницы с хедором и футером. И не зависит от исходного порядка элементов.
 
@@ -470,16 +472,16 @@ order
 
 ## Большие экраны
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/ext_4.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/ext_4.JPG)
 
 
 ## Средние экраны
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/ext_5.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/ext_5.JPG)
 
 ## Маленькие экраны
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/ext_6.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/ext_6.JPG)
 
 ## Префикс для Flexbox
 
@@ -532,7 +534,7 @@ Flexbox требует префикса для лучшей поддержки �
 + (old) означает старый синтаксис с 2009 года (например display: box;)
 
 
-![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/13.jpg)
+![Image alt](https://github.com/IlyaGall/html/raw/master/теория/htmlTags_16_FLEXBOX_/imagesTuturial/13.JPG)
 
 lackberry Browser 10+ поддерживает новый синтаксис.
 
