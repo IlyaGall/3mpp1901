@@ -23,7 +23,7 @@
 
 после этого выполним команду:
 
-**python manage.py startapp articles (blog)**
+**python manage.py startapp articles**
 
 эта команда создаст новое приложение
 
@@ -72,7 +72,7 @@ class Article(models.Model):
 •	Файл **urls.py** –описания URL для текущего проекта. «Оглавление» сайта.
 •	Файл **wsgi.py**– файл для настроек текущего проекта. Не изменяется.
 
- сохраните в **admin.py ** следующий код:
+ сохраните в **admin.py** следующий код:
 
 ``` python
 from django.contrib import admin
@@ -83,9 +83,9 @@ class ArticleAdmin(admin.ModelAdmin):
 admin.site.register(Article, ArticleAdmin)
 ```
 
-Класс **ArticleAdmin ** нужен для того, чтобы, используя декларативный стиль, описать то, каким образом модель **Article ** должна отображаться в административной панели.
+Класс **ArticleAdmin** нужен для того, чтобы, используя декларативный стиль, описать то, каким образом модель **Article** должна отображаться в административной панели.
 
-В конце файла вызывается функция **admin.site.register() **, которой передаются два параметра: модель статей и класс, описывающий, как модель должна отображаться в административном интерфейсе. Эта функция объявляет, что данная модель должна быть добавлена в административный интерфейс.
+В конце файла вызывается функция **admin.site.register()**, которой передаются два параметра: модель статей и класс, описывающий, как модель должна отображаться в административном интерфейсе. Эта функция объявляет, что данная модель должна быть добавлена в административный интерфейс.
 
 
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/7.JPG)
@@ -96,21 +96,21 @@ admin.site.register(Article, ArticleAdmin)
 
 заёдём в файл setting.py
 
-добавим в него библиотеку **import os (blog)**
+добавим в него библиотеку **import os**
 
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/9.JPG)
 
-Подключить приложение **'articles',  (blog)**  в  файле settings.py
+Подключить приложение **'articles',**  в  файле settings.py
 
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/10.JPG)
 
 в этом же файле заменить название бд(по желанию)
 
-для этого нужно найти строчку **DATABASES (blog)** в файле  settings.py
+для этого нужно найти строчку **DATABASES** в файле  settings.py
 
-и изменить **NAME (blog)**.
+и изменить **NAME**.
 
-**'NAME': os.path.join(BASE_DIR, 'Название новой бд.sqlite3') , (blog)**
+**'NAME': os.path.join(BASE_DIR, 'Название новой бд.sqlite3') ,**
 ```sql
 DATABASES = {
     'default': {
@@ -125,17 +125,17 @@ DATABASES = {
 
 с помощью команды:
 
-**python manage.py migrate (blog)**
+**python manage.py migrate**
 
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/12.JPG)
 
 После этого команды создаём суперпользователя( он нужен для входа на сайт)
 
-**! Нужно будет запомнить логин и пароль который вводишь (blog)**.
+**! Нужно будет запомнить логин и пароль который вводишь**.
 
 с помощью команды:
 
-**python manage.py createsuperuser (blog)**
+**python manage.py createsuperuser**
 
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/13.JPG)
 
@@ -144,7 +144,7 @@ DATABASES = {
 
 с помощью команды:
 
-**python manage.py runserver (blog)**
+**python manage.py runserver**
 
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/web_программирование_и_мобильная_разработка/lab3/imagesProject/14.JPG)
 
