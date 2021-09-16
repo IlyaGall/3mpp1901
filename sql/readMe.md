@@ -8,7 +8,7 @@
 
 **! Тут подвох заключаеться он в том, что сначала нужно выбрать картинка 1, а потом открыть запросник иначе не заработает(он будет disabled )**
 
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/1.JPG)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/1.PNG)
 
 после этого нажимает открыть (иконка папки) и выбираем нужную бд
 
