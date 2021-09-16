@@ -43,8 +43,11 @@
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/6.PNG)
 
 ## 1. Select
+
+```sql
 Select * from таблица_название
 + * столбцы_название - можно указывать через запятую.
+```
 
 ### псевдоним AS
 По сути создаёт новую переменную, которая имеет тот же тип данных и те же значения, что и у родителя, ключевое слово **AS**
@@ -76,3 +79,76 @@ SELECT DISTINCT(hair) FROM superheroes LIMIT 10;
 Если будет меньше результатов, то ничего не случиться, а если больше 10, то выдаст ровно 10. 
 
 ![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/7.PNG)
+
+## 2.  WHERE
+
+ключевое слово **where** указывает какие строки мы хотим выбрать из тиблиц. По сути это фильтр.
+
+```sql
+SELECT * FROM superheroes WHERE gender ='Female Characters'
+```
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/8.PNG)
+
+```sql
+ SELECT * FROM superheroes WHERE align = 'Reformed Criminals'
+```
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/9.PNG)
+
+
+Операторы сравнения: 
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/10.PNG)
+
+### BETWEEN
+
+Значение находяться в заданом диапазоне
+
+```sql
+ SELECT * FROM superheroes WHERE year BETWEEN 2000 AND 2005
+```
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/11.PNG)
+
+значение находиться в некотором списке
+
+### IN
+Проверяет наличие в столбце значений(можно задать через запятую)
+
+```sql
+SELECT * FROM superheroes WHERE hair IN ('Strawbery Blond Hair','Red Hair', 'Auburn Hair')
+```
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/12.PNG)
+
+### LIKE
++ **%** - любое количество символов (включая 0) **содержит**
++ **_** -ровно одному символу
+
+```sql
+SELECT * FROM superheroes WHERE hair LIKE '%Blond%'
+```
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/13.PNG)
+
+### логические операции
+
++ AND -И 
++ OR -ИЛИ
++ NOT - логическое НЕ
+
+```sql
+ SELECT * FROM superheroes WHERE hair ='Red Hair'
+ OR hair='Strawbery Blond Hair'
+ OR hair='Auburn Hair'
+```
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/14.PNG)
+
+
+так же можно использовать с **IN**
+
+```sql
+SELECT * FROM superheroes WHERE hair NOT IN ('Red Hair', 'Strawbery Blond Hair','Auburn Hair')
+```
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/14.PNG)
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/16.PNG)
