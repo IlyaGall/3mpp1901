@@ -12,15 +12,15 @@
 
 после этого нажимает открыть (иконка папки) и выбираем нужную бд
 
-картинка 2
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/2.PNG)
 
 + 3. Запустите загруженный файл в pgAgmin. Для этого нажмите на кнопку запуска в панели инструментов Запросника или на клавишу F5.
 
-картинка 3
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/3.PNG)
 
 + 4. Проверьте правильность выполнения запроса. В нижней части экрана pgAdmin, на закладке «Сообщения» должны появиться результаты выполнения.
 
-картинка 4
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/4.PNG)
 
 Основное, на что нужно обратить внимание — это сообщение «Запрос завершен успешно». Если такое сообщение появилось, значит все хорошо.
 
@@ -28,7 +28,7 @@
 
 Также в левой части интерфейса pgAdmin появится информация о созданных таблицах.
 
-картинка 5
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/5.PNG)
 
 ## Запуск SQL запросов в pgAdmin
 
@@ -39,7 +39,8 @@
 Полученные в ходе выполнения запроса данные показываются в нижней части окна, на закладке «Результат».
 
 **! чтобы сделать запрос надо нажать запросник и в новом окне делать запросы к бд**
-картинка 6
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/6.PNG)
 
 ## 1. Select
 Select * from таблица_название
@@ -74,4 +75,4 @@ SELECT DISTINCT(hair) FROM superheroes LIMIT 10;
  
 Если будет меньше результатов, то ничего не случиться, а если больше 10, то выдаст ровно 10. 
 
-Картинка 7
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/7.PNG)
