@@ -817,4 +817,493 @@ FROM products CROSS JOIN product_types
 ## 12 Схема базы данных (презентация, схема базы данных онлайн-школы в DrawSQL).
 
 Графическое представление бд
-![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/65.PNG)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/66.PNG)
+
+ПРОДУКТЫ В ЗАКАЗЕ
+
+```sql
+SELECT p.id,
+    p.name,
+    p.price,
+    s.quantity,
+    p.price * s.quantity AS total
+FROM products AS p JOIN sales AS s
+ON p.id = s.product_id
+WHERE s.order_id=2
+```
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/67.PNG)
+
+ВСЕ ПОКУПКИ ЗАКАЗЧИКА
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/66.PNG)
+
+```sql
+SELECT p.id,
+    p.name,
+    p.price,
+    s.quantity,
+    p.price * s.quantity AS total
+FROM products AS p JOIN sales AS s
+    ON p.id = s.product_id
+    JOIN orders AS o
+    ON o.id = s.order_id
+WHERE o.customer_id=1
+```
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/68.PNG)
+
+ИТОГИ
+Схема базы данных
++ Таблицы
++ Столбцы в таблицах и типы данных в них
++ Связи между таблицами
+
+Типы связей между таблицами
++ Один к одному (one-to-one)
++ Один ко многим (one-to-many)
++ Многие к одному (many-to-one)
++ Многие ко многим (many-to-many, реализуется через отдельную таблицу)
+
+## 13 ПОДЗАПРОСЫ В SQL
+Подзапрос выполняеться всёгда первым
+```sql
+SELECT id, name, price
+FROM products
+--WHERE price = (SELECT MAX(price)
+ --       FROM products)
+```
+без подзапроса
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/69.PNG)
+
+### ВЫВЕСТИ ИНФОРМАЦИЮ О САМОМ ДОРОГОМ ПРОДУКТЕ
+```sql
+SELECT id, name, price
+FROM products
+WHERE price = (SELECT MAX(price)
+        FROM products)
+```
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/70.PNG)
+
+### ВЫВЕСТИ ИНФОРМАЦИЮ О ПРОДУКТАХ, КОТОРЫЕ БЫЛИ ПРОДАНЫ ХОТЯ БЫ ОДИН РАЗ
+
+```sql
+SELECT id, name, price
+FROM products
+WHERE id IN (SELECT product_id
+FROM sales)
+```
+
+Тут **IN** потому, что тут есть список
+
+```SELECT product_id FROM sales```
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/71.PNG)
+
+весь скрипт
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/72.PNG)
+
+### ПОДЗАПРОСЫ В UPDATE 
+Увеличить стоимость каждой книги на 500р
+```sql  
+UPDATE products
+SET price = price + 500
+WHERE type_id = (SELECT id
+        FROM product_types
+        WHERE type_name='Книга')
+```
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/73.PNG)
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/74.PNG)
+
+## ИТОГ
+Подзапросы в SQL (subqueries)
++ Запрос внутри другого запроса SQL
++ Оформляется в круглых скобках
++ Запускается перед основным запросом
+Диагностика подзапроса
++ Запуск подзапроса отдельно от основного запроса
+Использование подзапросов в командах SQL
++ SELECT
++ UPDATE
++ DELETE
++ INSERT
+
+## 14 ТРАНЗАКЦИИ В БАЗАХ ДАННЫХ
+
+ПРИЧИНЫ НЕВЫПОЛНЕНИЯ КОМАНД
+
+Отказ СУБД
++ Аппаратная проблема с сервером СУБД
++ Программная ошибка в СУБД или операционной системе
++ Не хватает места на диске для записи данных
+Отказ приложения пользователя
++ Аппаратная проблема на клиенте
++ Программная ошибка в приложении или операционной системе
++ Пользователь прервал работу приложения 
+Потеря сетевого соединения клиента и сервера СУБД
++ Аппаратная проблема с сетевым оборудованием на клиенте/сервере
++ Проблемы с работой сети
+
+**Транзакция** – последовательность команд SQL, которые должны быть
+выполнены полностью или не выполнены вообще.
+
+```sql
+UPDATE accounts SET balance = balance – 15000
+WHERE account_number = 1234567 -- клиент онлайн школы
+
+UPDATE accounts SET balance = balance + 15000
+WHERE account_number = 9876543 -- онлайн школа
+```
+
+**НАЧАЛО ТРАНЗАКЦИИ**
+```START TRANSACTION;```
+
+### ВЫПОЛНЕНИЕ ТРАНЗАКЦИИ
+```sql
+START TRANSACTION;
+
+UPDATE accounts SET balance = balance – 15000
+WHERE account_number = 1234567;
+UPDATE accounts SET balance = balance + 15000
+WHERE account_number = 9876543; 
+```
+
+### ФИКСАЦИЯ ТРАНЗАКЦИИ COMMIT
+
+```sql
+START TRANSACTION;
+
+UPDATE accounts SET balance = balance – 15000
+WHERE account_number = 1234567;
+
+UPDATE accounts SET balance = balance + 15000
+WHERE account_number = 9876543;
+
+COMMIT;
+```
+
+```COMMIT``` - записать изменения в бд
+
+### ОТКАТ ТРАНЗАКЦИИ ROLLBACK
+
+```sql
+START TRANSACTION;
+
+UPDATE accounts SET balance = balance – 15000
+WHERE account_number = 1234567;
+
+UPDATE accounts SET balance = balance + 15000
+WHERE account_number = 9876543;
+
+ROLLBACK;
+
+```
+
+### АВТОМАТИЧЕСКАЯ ФИКСАЦИЯ ТРАНЗАКЦИЙ
+
++ Специальный режим работы СУБД
++ После выполнения каждой команды SQL автоматически фиксируется транзакция
++ Нет возможности отменить изменения
+
+Использование режима автоматической фиксации транзакций
++ PostgreSQL – включено по умолчанию
++ Oracle – выключено по умолчанию
+
+### ЗАВЕРШЕНИЕ ТРАНЗАКЦИЙ
++ Команды **COMMIT** или **ROLLBACK** - Явное подтверждение или отмена транзакции
++ **Запуск команд создания, изменения или удаления таблиц** 
+    + Создание, изменение или удаление таблицы не может быть отменено
+    + Перед запуском команды предыдущая транзакция фиксируется
++ Сбой сервера СУБД
+    + Откат всех незавершенных транзакций после восстановления сервера
++ Сбой клиента СУБД
+    + Откат незавершенной транзакции после тайм-аута
+
+### ИТОГ
+Транзакции в базах данных
++ Последовательность команд, которые должны быть выполнены все
++ полностью, или не выполнены совсем
+
+Начало транзакции
++ Команда START TRANSACTION
++ Автоматическая фиксация транзакций
+Завершение транзакции
++ Команда COMMIT – фиксация транзакции
++ Команда ROLLBACK – откат транзакции
+
+## 15 ИНДЕКСЫ В БАЗАХ ДАННЫХ
+
+Позволяет увеличить скорость поиска данных
+
+Индексы
++ Структура данных, позволяющая быстро определить положение интересующих данных в базе
++ Создается для столбца (совокупности столбцов) в таблице
++ Обеспечивает возможность повысить производительность запросов
+
+Использование индексов
++ Быстрый поиск положения интересующих данных в таблице
++ Извлечение всех интересующих данных из таблицы по найденному положению
++ Реализуется автоматически СУБД
+
+### СОЗДАНИЕ ИНДЕКСА
+
+```sql
+CREATE INDEX superheroes_name_idx
+ON superheroes(name)
+```
+
+при использовании индекса не надо менять sql запрос
+
+### КОГДА МОЖЕТ ИСПОЛЬЗОВАТЬСЯ ИНДЕКС
+
+Фильтрация данных из таблицы
++ Для столбца, указанного в WHERE, существует индекс
+
+Объединение данных
++ Для столбцов, указанных в условии объединения, существует индекс
+
+Сортировка данных
++ Для столбцов, указанных в ORDER BY, существует индекс в правильной последовательности сортировки
+
+### ПОРЯДОК СОРТИРОВКИ ДАННЫХ В ИНДЕКС
+
+```sql
+CREATE INDEX superheroes_appearances_idx
+ON superheroes(appearances DESC)
+```
+
+
+### ИНДЕКС ПО НЕСКОЛЬКИМ СТОЛБЦАМ
+```sql
+CREATE INDEX person_name_idx
+ON person(last_name, first_name)
+```
+
+### УДАЛЕНИЕ ИНДЕКСА
+
+```DROP INDEX person_name_idx```
+
+
+### НЕДОСТАТКИ ИНДЕКСОВ
++ Изменения в базе данных
++ Изменение в исходной таблице приводит к необходимости изменять все
++ связанные с ней индексы
++ Снижение производительности
++ Если индексов много, то при изменении данных в таблице требуется длительное временя для обновления индексов
+
+
+
+### ИТОГ
+Индекс
++ Структура данных, позволяющая быстро определить положение интересующих данных в базе
++ Создается для столбца или нескольких столбцов в таблице
+Применение индекса
++ Индекс используется автоматически СУБД, если это эффективно
++ Возможности использования: фильтрация, объединение данных из нескольких таблиц, сортировка 
+Эффекты от индексов
++ Повышение производительности запросов на чтение
++ Снижение производительности записи данных в таблицу
+
+## 16  ОГРАНИЧЕНИЯ В БАЗАХ ДАННЫХ
+### 16.1 id 
+```id INT PRIMARY KEY```
+### 16.2 НЕПУСТЫЕ ЗНАЧЕНИЯ NOT NULL
+
+```sql
+CREATE TABLE superheroes(
+    id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL, -- NOT NULL
+    align VARCHAR(30),
+    eye VARCHAR(30),
+    hair VARCHAR(30),
+    gender VARCHAR(30),
+    appearances INT,
+    year INT,
+    universe VARCHAR(10)
+)
+```
+
+### 16.3 УНИКАЛЬНЫЕ ЗНАЧЕНИЯ UNIQUE
+
+```sql
+CREATE TABLE superheroes(
+    id INT PRIMARY KEY,
+    name VARCHAR(100) UNIQUE, -- 
+    align VARCHAR(30),
+    eye VARCHAR(30),
+    hair VARCHAR(30),
+    gender VARCHAR(30),
+    appearances INT,
+    year INT,
+    universe VARCHAR(10)
+)
+```
+
+### 16.4 объеденение ограничений UNIQUE NOT NULL
+
+```sql
+CREATE TABLE superheroes(
+    id INT PRIMARY KEY,
+    name VARCHAR(100) UNIQUE NOT NULL,
+    align VARCHAR(30),
+    eye VARCHAR(30),
+    hair VARCHAR(30),
+    gender VARCHAR(30),
+    appearances INT,
+    year INT,
+    universe VARCHAR(10)
+)
+```
+### 16.5 ПЕРВИЧНЫЙ КЛЮЧ ИЗ НЕСКОЛЬКИХ ПОЛЕЙ
+```SQL
+CREATE TABLE sales(
+    product_id INT,
+    order_id INT,
+    quantity INT,
+PRIMARY KEY(product_id, order_id)
+)
+```
+
+
+### 16.6 ОГРАНИЧЕНИЯ ПО ПРОВЕРКЕ ЗНАЧЕНИЙ CHECK
+
++ **price INT CHECK (price >= 0)** , например цена должна быть больше нуля
+
+```SQL
+CREATE TABLE products(
+    id PRIMARY KEY,
+    name VARCHAR(100),
+    type_id INT,
+price INT CHECK (price >= 0)
+)
+```
+### 16.7 ИМЕНОВАННЫЕ ОГРАНИЧЕНИЯ
+можно задать имя
+```sql
+CREATE TABLE products(
+    id PRIMARY KEY,
+    name VARCHAR(100),
+    type_id INT,
+    price INT CONSTRAINT positive_price
+        CHECK (price >= 0)
+)
+```
+### 16.8 ОГРАНИЧЕНИЯ НА УРОВНЕ ТАБЛИЦЫ
+
+```sql
+CREATE TABLE products(
+    id PRIMARY KEY,
+    name VARCHAR(100),
+    type_id INT,
+    price INT,
+CONSTRAINT positive_price CHECK (price >= 0)
+)
+```
+### 16.9 ОГРАНИЧЕНИЯ ССЫЛОЧНОЙ ЦЕЛОСТНОСТИ (Ограничение внешнего ключа)
+
+```sql
+CREATE TABLE products(
+    id PRIMARY KEY,
+    name VARCHAR(100),
+    type_id INT REFERENCES product_types(id),
+    price INT
+)
+```
+
+### 19.9.1  ДЕЙСТВИЯ ПРИ УДАЛЕНИИ
+
+#### ON DELETE RESTRICT
+не даст удалить если есть связанные данные
+
+```sql
+CREATE TABLE products(
+    id PRIMARY KEY,
+    name VARCHAR(100),
+    type_id INT REFERENCES product_types(id)
+    ON DELETE RESTRICT,
+    price INT
+)
+```
+
+#### DELETE CASCADE
+Данные будут удаленны каскадно 
+
+```sql
+CREATE TABLE products(
+    id PRIMARY KEY,
+    name VARCHAR(100),
+    type_id INT REFERENCES product_types(id)
+    ON DELETE CASCADE,
+    price INT
+)
+```
+### 19.10 ДЕЙСТВИЯ ПРИ ИЗМЕНЕНИИ
+
+#### ON UPDATE RESTRICT 
+запрещение изменять строки на которых есть ссылки
+```sql
+CREATE TABLE products(
+    id PRIMARY KEY,
+    name VARCHAR(100),
+    type_id INT REFERENCES product_types(id)
+    ON UPDATE RESTRICT,
+    price INT
+)
+```
+
+#### ON UPDATE CASCADE
+В случаи изменения строки изменить и каскад
+```sql
+CREATE TABLE products(
+    id PRIMARY KEY,
+    name VARCHAR(100),
+    type_id INT REFERENCES product_types(id)
+    ON UPDATE CASCADE,
+    price INT
+)
+```
+
+### 19.20 ВНЕШНИЙ КЛЮЧ НА УРОВНЕ ТАБЛИЦЫ
+
+```sql
+CREATE TABLE products(
+    id PRIMARY KEY,
+    name VARCHAR(100),
+    type_id INT,
+    price INT,
+    FOREIGN KEY(type_id) REFERENCES product_types(id)
+)
+```
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/66.PNG)
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/75.PNG)
+
+### 
+
+```sql
+ПЕРВИЧНЫЙ И ВНЕШНИЙ КЛЮЧИ
+CREATE TABLE sales(
+    product_id INT REFERENCES products(id),
+    order_id INT REFERENCES orders(id),
+    quantity INT,
+    PRIMARY KEY(product_id, order_id)
+)
+```
+
+### ИТОГИ
+Ограничения
++ Ограничения на выполнение операций с целью сохранения согласованности данных в базе
+Типы ограничений
++ Первичный ключ – PRIMARY KEY
++ Внешний ключ – FOREIGN KEY
++ Непустые значения – NOT NULL
++ Уникальные значение – UNIQUE
++ Проверка условий – CHECK
+
+
+## 17 ПРЕДСТАВЛЕНИЯ В SQL
