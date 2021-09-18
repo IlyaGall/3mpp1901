@@ -1307,3 +1307,79 @@ CREATE TABLE sales(
 
 
 ## 17 ПРЕДСТАВЛЕНИЯ В SQL
+Создание виртуальной таблицы
+```sql
+CREATE VIEW customers_v id, name
+AS SELECT id, name FROM customers
+```
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/76.PNG)
+
+
+### ЗАПРОСЫ К ПРЕДСТАВЛЕНИЯМ
+
+```SELECT * FROM customers_v```
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/77.PNG)
+
+### ПРЕДСТАВЛЕНИЯ С ДАННЫМИ ИЗ НЕСКОЛЬКИХ ТАБЛИЦ
+
+```sql
+CREATE VIEW products_v
+AS SELECT p.id AS id,
+    p.name AS product_name,
+    t.type_name AS product_type,
+    p.price AS product_price
+FROM products AS p JOIN product_types AS t
+ON p.type_id = t.id
+```
+
+
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/sql/images/78.PNG)
+
+### ЗАЧЕМ ИСПОЛЬЗОВАТЬ ПРЕДСТАВЛЕНИЯ
+Ограничение доступа к данным
++ Представление содержит не все столбцы/строки исходной таблицы
+Псевдонимы для сложных запросов
++ Запрос извлекает данные из нескольких таблиц
++ Запрос выполняет группировки и расчет агрегаций
+Сокрытие реализации
++ Пользователи работают только с представлениями
++ Таблицы в базе данных можно менять
+
+## МАТЕРИАЛИЗОВАННЫЕ ПРЕДСТАВЛЕНИЯ
+Для запросов которые работают довольно долго или часто
+
+```sql
+CREATE MATERIALIZED VIEW products_v
+AS SELECT p.id AS id,
+    p.name AS product_name,
+    t.type_name AS product_type,
+    p.price AS product_price
+FROM products AS p JOIN product_types AS t
+ON p.type_id = t.id
+```
+
+### ОБНОВЛЕНИЕ МАТЕРИАЛИЗОВАННЫХ ПРЕДСТАВЛЕНИЙ
+Данные автоматически не обновляються, поэтому нужно в ручную это делать
+
+```REFRESH MATERIALIZED VIEW products_v```
+
+### УДАЛЕНИЕ ПРЕДСТАВЛЕНИЙ
+**DROP VIEW products_v**
+
+### УДАЛЕНИЕ МАТЕРИАЛИЗОВАННЫХ ПРЕДСТАВЛЕНИЙ
+**DROP MATERIALIZED VIEW products_v**
+
+ИТОГИ
+Представления
++ Псевдонимы для запросов SELECT
++ Используются как аналоги таблиц
++ Не содержат данных 
+Использование представлений
++ Ограничение доступа к данным
++ Псевдонимы для сложных запросов
++ Сокрытие реализации
+Материализованные представления
++ Содержат данные
++ Повышают скорость выполнения запросов
