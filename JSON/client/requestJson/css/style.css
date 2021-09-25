@@ -1,0 +1,22 @@
+.flex-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.card {
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Параметры тени */
+    margin: 10px;
+    padding: 10px;
+}
+.add-data {
+    margin: 10px;
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+    font-size: 30px;
+}
+.link {
+    width: 300px;
+}

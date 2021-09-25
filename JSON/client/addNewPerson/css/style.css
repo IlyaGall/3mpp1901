@@ -1,0 +1,56 @@
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px;
+    width: 100%;
+}
+.flex input {
+    margin-top: 20px;
+    width: 100%;
+    font-size: 20px;
+}
+.type-phones,
+.cars {
+    position: relative;
+    padding: 30px;
+}
+.button-abs {
+    position: absolute;
+    bottom: 0;
+}
+.main {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.attation {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    right: 0;
+    background-color: red;
+    opacity: 0.5;
+    transition: 0.5s;
+    transform: scale3d(0, 0, 1);
+}
+.attation.active {
+    opacity: 1;
+    transition: 0.5s;
+
+    transform: none;
+}
+.attation__text {
+    color: white;
+    font-size: 40px;
+    margin: 40px;
+}
+.button-click {
+    margin: 20px;
+}
+.result {
+    width: 100%;
+    overflow-x: auto;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        Отправляем JSON-данные на сервер
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body style="text-align:center;" id="body">
+    <!-- заголовок -->
+    <h1> добовление новых данных </h1>
+    <main>
+        <div class="flex">
+            <p>ФИО</p>
+            <input type="text" id="name" placeholder="имя">
+            <input type="text" id="lastname" placeholder="фамилия">
+            <input type="text" id="middle_name" placeholder="отчество">
+            <input type="text" id="data_bd" placeholder="дата рождения">
+            <p>Место проживания</p>
+            <input type="text" id="country" placeholder="страна">
+            <input type="text" id="city" placeholder="город">
+            <input type="text" id="street" placeholder="улица">
+            <input type="text" id="index" placeholder="индекс">
+            <!-- <input type="text" name="type_phone" placeholder="тип телефона">
+            <input type="text" name="number_phone" placeholder="номер">-->
+
+            <div class="flex type-phones">
+                <p>телефон</p>
+                <input type="text" class="type-phone" placeholder="тип телефона">
+                <input type="text" class="number-phone" placeholder="номер">
+                <button class="button-abs" onclick="addFieldPhone()">add phone</button>
+            </div>
+
+            <p>офис</p>
+            <input type="text" id="id_office" placeholder="номер офиса">
+            <input type="text" id="name_office" placeholder="имя отдела">
+            <input type="text" id="personal_position_id" placeholder="должность">
+            <input type="text" id="personal_salary_assigned" placeholder="З\п">
+
+            <div class="flex cars">
+                <p>автомобиль</p>
+                <input type="text" class="car-brand" placeholder="марка">
+                <input type="text" class="model" placeholder="модель">
+                <input type="text" class="date-bild" placeholder="год выпуска">
+
+                <button class="button-abs" onclick="addCar()">add car</button>
+            </div>
+
+
+            <!-- по нажатию на эту кнопку данные уйдут на сервер -->
+            <button class="button-click" onclick="sendJSON()">добавить данные</button>
+            <!-- эта кнопка поменяет полученные данные и отправит их снова на сервер -->
+            <!-- <button onclick="editJSON()">Изменить JSON</button> -->
+            <!-- а вот тут они появятся снова, но уже после обработки сервером -->
+
+            <!-- <a href="http://xn--80aaklnzueid0i.xn--h1ahn.xn--p1acf/json/data.json" download>Скачать файл</a> -->
+            <a href="http://xn--80aaklnzueid0i.xn--h1ahn.xn--p1acf/donwloadJson.html" download>Перейти на страницу
+                сервера для скачивания БД</a>
+
+        </div>
+        <div class="attation">
+            <p class="attation__text"></p>
+        </div>
+        <p class="result" style="color:blue"></p>
+
+        <a href="../requestJson/requestJson.html">Посмотреть данные</a>
+    </main>
+</body>
+<script src="js/jsonServer.js"></script>
+
+</html>
