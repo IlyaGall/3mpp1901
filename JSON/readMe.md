@@ -42,7 +42,7 @@ Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
 
 Фактически этот файл сейчас означает: «разрешаю тебе принимать запросы со всех сайтов, вот такого типа запросы можно принимать, вот такие у них могут быть заголовки». 
 
-```! Файл .htaccess нужно не потерять (на некоторых операционках он станет невидимым, как только сохраняешь его как .htaccess — придётся покопаться в настройках, чтобы его раскрыть). ! ```
+```! Файл .htaccess можно не потерять (на некоторых операционках он станет невидимым, как только сохраняешь его как .htaccess — придётся покопаться в настройках, чтобы его раскрыть). ! ```
 
 Дальше идёт настройка php кода, который отвечает за обработку запросов с клиента.
 
@@ -142,5 +142,211 @@ else{
 
 ### Клиент
 разбит на две папки 
-+ 1 requestJson отвечает за пустой запрос, который расчитывает получить базу данных без добовления в неё данных со стороны клиента
-+ 2 addNewPerson отвечает за добовления новых данных в базу данных
++ 1 ```requestJson``` отвечает за пустой запрос, который расчитывает получить базу данных без добовления в неё данных со стороны клиента
++ 2 ```addNewPerson``` отвечает за добовления новых данных в базу данных
+
+#### requestJson
+
+
++ ```css``` 
+    + ```style.css```
++ ```js```
+    + ```jsonScriptver2.js```
++ файла ```requestJson.html```
+
+файл style.css - это Cascading Style Sheets (каскадные таблицы стилей)
+
+```css
+.flex-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.card {
+    max-width: 500px; /*максимальный размер */
+    width: 100%; /* размер */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Параметры тени */
+    margin: 10px;  /* отступы внешние */
+    padding: 10px; /* отступы внутриние */
+}
+.add-data { /* кнопка */
+    margin: 10px;
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+    font-size: 30px;
+}
+.link {
+    width: 300px;
+}
+
+```
+
+```requestJson.html```
+в секцию 
+```
+<section class="flex-cards">
+</section>
+```
+будут динамически загружаться данные пришедшие со стороны сервера
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<header>
+</header>
+
+<section class="flex-cards">
+</section>
+
+<a class="link" href="../addNewPerson/addNewPerson.html">
+    <button class="add-data">добавить данные</button>
+</a>
+
+<a class="link" href="http://xn--80aaklnzueid0i.xn--h1ahn.xn--p1acf/donwloadJson.html" download>
+    <button class="add-data">скачать БД</button>
+</a>
+
+<body>
+
+</body>
+<script src="js/jsonScriptver2.js"></script>
+
+</html>
+```
+
+
+
+```js
+let section = document.querySelector('section'); // находим селектор в который будем добовлять данные
+
+let requestURL = "http://xn--80aaklnzueid0i.xn--h1ahn.xn--p1acf/json/json.php"; // адресс сервера на который будут отправленны данные
+let request = new XMLHttpRequest();  // создаём новый экземпляр запроса XHR
+
+request.open('GET', requestURL);  // открываем соединение
+request.responseType = 'text'; // теперь получаем строку!
+request.send();
+
+request.onload = function () {
+    let fullPersonalText = request.response;// получить строку из ответа
+    let personal = JSON.parse(fullPersonalText); // преобразовать его в объект
+    mainInformation(personal);
+}
+
+function mainInformation(jsonObj) {
+    for (let i = 0; i < jsonObj.length; i++) { // перебор значений
+        let personal; // создаем переменную в которую будут загруженны данные с сервера
+        jsonObj[i].forEach(element => {
+            personal = element;
+        });
+
+        let myArticle = document.createElement('article'); // создание элемента
+        myArticle.className = "card"; // присвоение класса элементу
+
+        let myH2 = document.createElement('h2');
+        let myPara1 = document.createElement('p');
+        let myPara2 = document.createElement('p');
+        let myPara3 = document.createElement('p');
+        let myPara4 = document.createElement('p');
+
+        myPara1.textContent = 'Имя: ' + personal.personal_name;
+        myPara2.textContent = 'Фамилия: ' + personal.lastname;
+        myPara3.textContent = 'Отчество: ' + personal.middleName;
+        myPara4.textContent = 'Дата рождения:' + personal.dob;
+
+        //////////////////
+        let myPara5 = document.createElement('p');
+        let myPara6 = document.createElement('p');
+        let myPara7 = document.createElement('p');
+        let myPara8 = document.createElement('p');
+
+
+        myPara5.textContent = 'Улица: ' + personal.adress_person.country;
+        myPara6.textContent = 'город: ' + personal.adress_person.city;
+        myPara7.textContent = 'Индекс: ' + personal.adress_person.street;
+        myPara8.textContent = 'Страна проживания: ' + personal.adress_person.index;
+
+        /////////////
+        let myParaPhone = document.createElement('p');
+        myParaPhone.textContent = 'Телефон для связи: ';
+
+        let myList = document.createElement('ul');
+        for (let phone = 0; phone < personal.phone.length; phone++) {
+            let listItem = document.createElement('li');
+            listItem.textContent = personal.phone[phone].type + ' ' + personal.phone[phone].number;
+            myList.appendChild(listItem);
+        }
+
+        ////////////
+        let myPara9 = document.createElement('p');
+        let myPara10 = document.createElement('p');
+        let myPara11 = document.createElement('p');
+
+
+        myPara9.textContent = "Номер оффиса " + personal.personal_office_number.number_office;
+        myPara10.textContent = "Отдел " + personal.personal_office_number.name_office;
+        myPara11.textContent = "Должность " + personal.personal_office_number.position_id;
+        //////////////
+        let myPara12 = document.createElement('p');
+        myPara12.textContent = "Зарплата " + personal.personal_office_number.salary_assigned;
+        //////////////
+        let myPara13 = document.createElement('p');
+        let carList = document.createElement('ul');
+        if (personal.personal_company_car[0].car_brand == "" ||
+            personal.personal_company_car[0].model == "" ||
+            personal.personal_company_car[0].date_bild == "") {
+            myPara13.textContent = "Машины: отсутсвует";
+
+        } else {
+            myPara13.textContent = "Машины: " + personal.personal_company_car.length;
+            for (let car = 0; car < personal.personal_company_car.length; car++) {
+                let carBrand = document.createElement('li');
+                let model = document.createElement('li');
+                let dateBild = document.createElement('li');
+                carBrand.textContent = "Марка автомобиля: " + personal.personal_company_car[car].car_brand;
+                model.textContent = "Модель:  " + personal.personal_company_car[car].model;
+                dateBild.textContent = "Год выпуска: " + personal.personal_company_car[car].date_bild;
+                carList.appendChild(carBrand);
+                carList.appendChild(model);
+                carList.appendChild(dateBild);
+            }
+        }
+
+        myArticle.appendChild(myH2);
+        myArticle.appendChild(myPara1);
+        myArticle.appendChild(myPara2);
+        myArticle.appendChild(myPara3);
+        myArticle.appendChild(myPara4);
+
+        myArticle.appendChild(myPara5);
+        myArticle.appendChild(myPara6);
+        myArticle.appendChild(myPara7);
+        myArticle.appendChild(myPara8);
+        myArticle.appendChild(myParaPhone);
+
+        myArticle.appendChild(myList);
+
+        myArticle.appendChild(myPara9);
+        myArticle.appendChild(myPara10);
+        myArticle.appendChild(myPara11);
+
+        myArticle.appendChild(myPara12);
+
+        myArticle.appendChild(myPara13);
+        myArticle.appendChild(carList);
+
+        section.appendChild(myArticle);
+    }
+}
+
+```

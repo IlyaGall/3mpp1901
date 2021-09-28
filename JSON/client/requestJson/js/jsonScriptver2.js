@@ -1,8 +1,5 @@
-let header = document.querySelector('header');
 let section = document.querySelector('section');
 
-//let requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superpersonal.json';
-//let requestURL = 'json/superpersonal.json';
 let requestURL = "http://xn--80aaklnzueid0i.xn--h1ahn.xn--p1acf/json/json.php"; //comanServer.php
 let request = new XMLHttpRequest();
 
@@ -16,10 +13,6 @@ request.onload = function () {
     mainInformation(personal);
 
 }
-
-
-
-
 
 function mainInformation(jsonObj) {
 
@@ -104,26 +97,6 @@ function mainInformation(jsonObj) {
                 carList.appendChild(dateBild);
             }
         }
-
-
-
-
-
-        // personal.personal_company_car.forEach(element => {
-        //     let cars = element;
-        //     let carBrand = document.createElement('li');
-        //     let model = document.createElement('li');
-        //     let dateBild = document.createElement('li');
-        //     carBrand.textContent = "Марка автомобиля: " + cars.car_brand;
-        //     model.textContent = "Модель авто: " + cars.model;
-        //     dateBild.textContent = "Год выпуска авто: " + cars.date_bild;
-
-        //     carList.appendChild(carBrand);
-        //     carList.appendChild(model);
-        //     carList.appendChild(dateBild);
-        // });
-
-
 
         myArticle.appendChild(myH2);
         myArticle.appendChild(myPara1);
