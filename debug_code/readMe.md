@@ -21,19 +21,19 @@ def test_division_good():
 
 далее переходим в утилиты 
 
-![Image alt](https://github.com/IlyaGall/react/raw/master/img_readMe/1.JPG)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/img_readMe/1.JPG)
 
 нажимаем edit configuration
 
-![Image alt](https://github.com/IlyaGall/react/raw/master/img_readMe/2.JPG)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/img_readMe/2.JPG)
 
 не забыть добавить 
 
-![Image alt](https://github.com/IlyaGall/react/raw/master/img_readMe/3.JPG)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/img_readMe/3.JPG)
 
 запускаю тест
 
-![Image alt](https://github.com/IlyaGall/react/raw/master/img_readMe/4.JPG)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/img_readMe/4.JPG)
 
 далее изменим код, добавив ещё один тест
 
@@ -47,7 +47,7 @@ def test_division_one_more():
 ```
 получили следующий результат:
 
-![Image alt](https://github.com/IlyaGall/react/raw/master/img_readMe/5.JPG)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/img_readMe/5.JPG)
 
 Но писать каждый раз ф-ю не есть хорошо. Поэтому пишем надо использовать ```@pytest.mark.parametrize``` 
 
@@ -65,7 +65,7 @@ def test_division_good(a, b, expected_result):
 ```
 получил следующий результат
 
-![Image alt](https://github.com/IlyaGall/react/raw/master/img_readMe/6.JPG)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/img_readMe/6.JPG)
 
 ## спровоцированная ошибка и проверка на срабатывание
 добавим следующий код 
@@ -78,7 +78,7 @@ def test_zero_division():
 так как делить на 0 нельзя, то тест должен провалится и выдасть ошибку, но благодаря строчке 
 ```with pytest.raises(ZeroDivisionError):``` мы сможем узнать провалился ли тест без вывода ошибки. Если тест не провалится, то тут как раз произойдёт ошибка
 
-![Image alt](https://github.com/IlyaGall/react/raw/master/img_readMe/7.JPG)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/img_readMe/7.JPG)
 
 изменю код, чтобы ошибки не было, но из-за строчки ```with pytest.raises(ZeroDivisionError):``` тест провалится из-за того, что как раз нет ошибки деления на 0
 ```python
@@ -88,7 +88,7 @@ def test_zero_division():
         division(10, 1)
 ```
 
-![Image alt](https://github.com/IlyaGall/react/raw/master/img_readMe/8.JPG)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/img_readMe/8.JPG)
 
 можно поймать на ошибку типов
 
@@ -116,7 +116,7 @@ def test_type_error():
 
 ```
 
-![Image alt](https://github.com/IlyaGall/react/raw/master/img_readMe/9.JPG)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/img_readMe/9.JPG)
 
 подкоректируем код 
 
@@ -142,4 +142,4 @@ def test_division_with_error(exepected_exception, devisionable, divider):
         division(devisionable, divider)
 ```
 
-![Image alt](https://github.com/IlyaGall/react/raw/master/img_readMe/10.JPG)
+![Image alt](https://github.com/IlyaGall/3mpp1901_ilyaGaluzinskiy/raw/master/debug_code/img_readMe/10.JPG)
